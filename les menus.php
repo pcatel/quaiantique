@@ -13,6 +13,7 @@
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/slider.css">
+  <link rel="stylesheet" href="css/login.css">
 
 
 </head>
@@ -26,18 +27,21 @@
     <p> <b>Arnaud Michant - Chambéry</b></p>
   </div>
   <div class="navbar">
-    <a href="index.php">Accueil</a>
+    <a href="index.php" class="active">Accueil</a>
     <a href="la carte.php">La carte</a>
-    <a href="les menus.php" class="active">Les Menus</a>
+    <a href="les menus.php">Les Menus</a>
     <a href="reservation.php">Réserver</a>
-    <a href="login.php" class="right">Me connecter</a>
+
+    <!-- gestion de la connexion -->
+    <?php include 'php/session.php'; ?>
+
   </div>
 
 
 
 
   <div class="row">
-    
+
     <div class="side">
       <h2 style="text-align: center;">Nos Plats "signature"</h2>
       <?php include 'php/slider.php'; ?>
@@ -51,9 +55,9 @@
 
 
 
+      <div class="container">
+        <div class="fakeimg">
 
-      <div class="fakeimg">
-        <div class="container">
           <!-- Affiche de la présentation des menus -->
           <div class="gridMenu">
             <div class="gridColumn">
@@ -69,13 +73,11 @@
               <p class="descriptionMenu">Ce menu est une expérience culinaire en plusieurs plats, souvent proposée pour des occasions spéciales ou pour les personnes qui veulent découvrir une variété de plats dans un même repas. Il peut également être accompagné d'une sélection de vins pour une expérience gastronomique complète.</p>
             </div>
           </div>
-        </div>
-      </div>
 
+<br>
 
-      <!-- Affiche des menus -->
-      <div class="fakeimg">
-        <div class="container">
+          <!-- Affiche des menus -->
+
           <div class="gridMenu">
             <div class="gridColumn">
               <p class="nomFormule">Formule Diner</p>

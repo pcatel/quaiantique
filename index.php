@@ -28,7 +28,10 @@
     <a href="la carte.php">La carte</a>
     <a href="les menus.php">Les Menus</a>
     <a href="reservation.php">Réserver</a>
-    <a href="login.php" class="right">Me connecter</a>
+    
+    <!-- gestion de la connexion -->
+    <?php include 'php/session.php'; ?>
+  
   </div>
 
 
@@ -43,6 +46,11 @@
 
     <div class="main">
       <h2>La carte</h2>
+
+    
+
+
+
 
       <div class="fakeimg" style="height:350px;"><img class="slide-img" src="img/index/lacarte.jpg"></div>
       <p>Some text..</p>

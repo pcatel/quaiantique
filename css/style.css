@@ -10,6 +10,13 @@ body {
   
 }
 
+a {
+  color: #392C1E;
+  font-family: Montserrat;
+  text-decoration: none;
+  
+}
+
 /* Header/logo Title */
 .header {
   padding: 80px;
@@ -84,11 +91,13 @@ body {
 
 /* Main column */
 .main {
+
   -ms-flex: 70%;
-  /* IE10 */
   flex: 70%;
+  margin: 0 auto;
   background-color: white;
-  padding: 20px;
+  padding: 10px;
+  
 }
 
 /* Fake image, just for this example */
@@ -96,6 +105,7 @@ body {
   /*background-color: #aaa;*/
   width: 100%;
   padding: 20px;
+  text-align: center;
 }
 
 /* Footer */

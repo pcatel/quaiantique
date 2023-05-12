@@ -18,22 +18,30 @@
 </head>
 
 <body>
-<?php //include 'php/header.php'; ?>
-  <?php //include 'php/navbar.php'; ?>
+
  
   
   <div class="header" style="background-image: url('img/index/horaire ouverture.jpg');background-position: center;background-size: cover;opacity: 0.8;color: 'black';">
   <h1>Quai Antique</h1>
   <p> <b>Arnaud Michant - Chambéry</b></p>
+  
+<div class="navbar">
+    <a href="index.php" class="active">Accueil</a>
+    <a href="la carte.php">La carte</a>
+    <a href="les menus.php">Les Menus</a>
+    <a href="reservation.php">Réserver</a>
+    
+    <!-- gestion de la connexion -->
+    <?php include 'php/session.php'; ?>
+  
   </div>
-  <div class="navbar">
-  <a href="index.php">Accueil</a>
-  <a href="la carte.php">La carte</a>
-  <a href="les menus.php">Les Menus</a>
-  <a href="horaires.php" class="active">Les Horaires d'ouverture</a>
-  <a href="reservation.php">Réserver</a>
-  <a href="login.php" class="right">Me connecter</a>
-</div>
+
+
+
+
+
+
+
 
 
 
