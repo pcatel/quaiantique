@@ -18,7 +18,7 @@
 
 </head>
 
-<body>
+<body onload=initDatePicker();>
 
   <?php
   // génération des horaires en json
@@ -53,7 +53,7 @@
   //Afficher le tableau au format JSON
 
   file_put_contents("json/horaires.json", json_encode($data));
-?>
+  ?>
 
 
 
@@ -99,23 +99,32 @@
 
           <form class="contact-form">
             <label for="">Date souhaitée</label>
-            <input type="date" name="dateSouhaitee" id="dateSouhaitee" required placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" />
+            <input type="date" name="dateSouhaitee" id="dateSouhaitee" required placeholder="dd-mm-yyyy" value="" max="2030-12-31" />
+            <script>
+              const dateDuJour = new Date();
+              const dateMin = dateDuJour.toISOString().split('T')[0];
+              document.getElementById('dateSouhaitee').setAttribute('min', dateMin);
+            </script>
+
+
 
 
             <br>
             <input type="submit" id='submit' value='voir les disponibiltés' onclick="createButtons()">
             <br>
             <p id="titreMidi"></p>
+            <p id="fermeMidi"></p>
             <div id="midi"></div>
 
             <br>
 
             <p id="titreSoir"></p>
+            <p id="fermeSoir"></p>
             <div id="soir"></div>
 
             <br>
 
-            <label for="heureChoisie">Heure choisie :</label>
+            <label for="">Heure choisie :</label>
             <input type="text" id="heureChoisie" name="heureChoisie">
 
 

@@ -1,8 +1,9 @@
-
+// Déclaration des variables
 var listeHoraires = [];
 var xhr = new XMLHttpRequest();
 var jour = "";
 var nomJour = "";
+var leNomDuJour = ""; // est affiché lors du chois de la date du datepicket
 const options = { weekday: 'long', timeZone: 'UTC' }; // Option pour afficher le jour en français
 
 var startDateMidi = "";
@@ -16,17 +17,14 @@ var heureFinMidi = "";
 var heureFinSoir = "";
 
 
-
-
-
-
-
-
+// fonction d'iniitialisation
 function createButtons() {
-  chargeJsonFiche();
-  //chercheHorairesDuJour();
-  //createButtonsMidi();
-  //createButtonsSoir();
+
+
+
+  removeBtn();//on efface tous les boutons eventuellement déjà créés
+  chargeJsonFiche(); // on charge le fichier json des horaires
+
 };
 
 function chargeJsonFiche() {
@@ -34,7 +32,7 @@ function chargeJsonFiche() {
   xhr.onload = function () {
     if (xhr.status === 200) { // vérifier si la réponse est OK
       listeHoraires = JSON.parse(xhr.responseText); // extraire les produits du fichier JSON
-      chercheHorairesDuJour(); // appeler la fonction pour afficher le tableau
+      chercheHorairesDuJour(); // on appelle la fonction pour rechercher les horaires selon le jour sélectionné
     };
   };
   xhr.send(); // envoyer la requête
@@ -42,40 +40,45 @@ function chargeJsonFiche() {
 
 
 function chercheHorairesDuJour() {
+
+
+
   jour = new Date(document.getElementById("dateSouhaitee").value);
+
   nomJour = strUcFirst(jour.toLocaleString('fr-FR', options)); // afficher le nom du jour en Français
-  alert('le nom du jour est selon chercheHorairesDuJour est    : ' + nomJour);
+
+ // affiche le jour dans le champs date heure de réservation 
+  const optionsbis = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' };
+  leNomDuJour = strUcFirst(jour.toLocaleDateString('fr-FR', optionsbis)); // Formatage de la date selon la locale fr-FR au format 'JJ/MM/AAAA'
+  document.getElementById('heureChoisie').value = leNomDuJour;
+
 
   for (var i = 0; i < listeHoraires.length; i++) { // recherche le jour
-    if (listeHoraires[i].jour == nomJour) {
+    if (listeHoraires[i].jour == nomJour) { //on recherche dans le fichier json les hoaires dun midi et les horaires du soir pour le jour sélectionnée
 
-      if (listeHoraires[i].service == 'midi') {
+      if (listeHoraires[i].service == 'midi') { // les horaires début et fin pour le midi
         heureDebutMidi = listeHoraires[i].heureDebut;
         heureFinMidi = listeHoraires[i].heureFin;
-      } else {
+
+      } else { // les horaires début et fin pour le soir
         heureDebutSoir = listeHoraires[i].heureDebut;
-        heureFinSoir = listeHoraires[i].heureFin;
+        heureFinSoir = listeHoraires[i].heureFin; // on arrete les reservations 1 heure avant la fin du service
       };
     };
   };
-  //return; 
-  //alert('heure de début : ' + heureDebutMidi + ' et heure de fin : ' + heureFinMidi);
-  //alert('heure de début : ' + heureDebutSoir + ' et heure de fin : ' + heureFinSoir);
-  createButtonsMidi();
+
+  createButtonsMidi(); // appelle de la fonction qui créé les boutons pour le service du midi
 };
 
 
 
 
-function strUcFirst(a) { return (a + '').charAt(0).toUpperCase() + a.substr(1); }
+function strUcFirst(a) { return (a + '').charAt(0).toUpperCase() + a.substr(1); } // on capitalise la première lettre du jour
 
 
 function createButtonsMidi() {
   // Récupérer la date à partir du formulaire
   const date = new Date(document.getElementById("dateSouhaitee").value);
-  //jour = new Date(document.getElementById("dateSouhaitee").value);
-
-  alert('heure de début : ' + startDateMidi.substring(0, 2) + ' et heure de fin : ' + endDateMidi.substring(0, 2));
 
   // Créer une date de début pour le service du midi
   startDateMidi = new Date(date.getFullYear(), date.getMonth(), date.getDate(), heureDebutMidi.substring(0, 2), 0, 0);
@@ -84,8 +87,10 @@ function createButtonsMidi() {
   endDateMidi = new Date(date.getFullYear(), date.getMonth(), date.getDate(), heureFinMidi.substring(0, 2), 0, 0);
 
 
-  // Calculer le nombre de tranches de 15 minutes entre les deux heures
 
+
+
+  // Calculer le nombre de tranches de 15 minutes entre les deux heures
   const numSlots = Math.floor((endDateMidi - startDateMidi) / (15 * 60 * 1000));
 
   // Créer les boutons pour chaque tranche de 15 minutes
@@ -93,17 +98,35 @@ function createButtonsMidi() {
   buttonsContainer.innerHTML = ""; // Effacer tout contenu précédent
   let currentTime = startDateMidi;
   document.getElementById('titreMidi').innerHTML = 'Midi';
-  for (let i = 0; i < numSlots; i++) {
-    // Créer un nouveau bouton
-    const button = document.createElement("button");
-    button.className = "horaires";
-    button.textContent = currentTime.toLocaleDateString() + " " + currentTime.toLocaleTimeString();
-    buttonsContainer.appendChild(button);
-    // Ajouter 15 minutes à l'heure actuelle
-    currentTime = new Date(currentTime.getTime() + 15 * 60000);
+
+  if (numSlots == 0) { // si heure de fin - heure de début est égale à 0 alors le restaurant est fermé le midi
+    document.getElementById('fermeMidi').innerHTML = 'Fermé le midi';
+  } else {
+    for (let i = 0; i < numSlots; i++) {
+      // Créer un nouveau bouton
+      const button = document.createElement("button");
+      button.className = "horaires";
+      //button.textContent = currentTime.toLocaleDateString() + " " + currentTime.toLocaleTimeString();
+      button.textContent = currentTime.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+      button.addEventListener("click", function () {
+        // Récupérer la valeur du bouton cliqué
+        const value = button.textContent;
+
+
+        // Mettre à jour la valeur du champ d'entrée avec la valeur du bouton
+
+
+        const input = document.getElementById('heureChoisie');
+        input.value = input.value = leNomDuJour + ' à ' + value;
+      });
+
+      buttonsContainer.appendChild(button);
+      // Ajouter 15 minutes à l'heure actuelle
+      currentTime = new Date(currentTime.getTime() + 15 * 60000);
+    };
   };
-  // return;
-  createButtonsSoir();
+
+  createButtonsSoir(); // on appellle la fonction qui créé les boutons pour le service du soir
 };
 
 
@@ -113,16 +136,12 @@ function createButtonsSoir() {
 
   // Récupérer la date à partir du formulaire
   const date = new Date(document.getElementById("dateSouhaitee").value);
-
-
-
   // Créer une date de début à midi
 
   startDateSoir = new Date(date.getFullYear(), date.getMonth(), date.getDate(), heureDebutSoir.substring(0, 2), 0, 0);
 
   // Créer une date de fin à 15h00
   endDateSoir = new Date(date.getFullYear(), date.getMonth(), date.getDate(), heureFinSoir.substring(0, 2), 0, 0);
-  //alert('heure de début : ' + startDateSoir + ' et heure de fin : ' + endDateSoir);
 
   // Calculer le nombre de tranches de 15 minutes entre les deux heures
 
@@ -133,39 +152,56 @@ function createButtonsSoir() {
   buttonsContainer.innerHTML = ""; // Effacer tout contenu précédent
   let currentTime = startDateSoir;
   document.getElementById('titreSoir').innerHTML = 'Soir';
-  for (let i = 0; i < numSlots; i++) {
-    // Créer un nouveau bouton
-    const button = document.createElement("button");
-    button.className = "horaires";
-    button.textContent = currentTime.toLocaleDateString() + " " + currentTime.toLocaleTimeString();
-    buttonsContainer.appendChild(button);
-    // Ajouter 15 minutes à l'heure actuelle
-    currentTime = new Date(currentTime.getTime() + 15 * 60000);
-  }
-  // return;
-}
 
-function afficheHeureChoisie() {
-  // Récupérer tous les boutons avec la classe "horaires"
-  const buttons = document.querySelectorAll(".horaires");
+  if (numSlots == 0) {
+    document.getElementById('fermeSoir').innerHTML = 'Fermé le soir';
+  } else {
+    for (let i = 0; i < numSlots; i++) {
+      // Créer un nouveau bouton
+      const button = document.createElement("button");
+      button.className = "horaires";
+      button.textContent = currentTime.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
 
-  // Parcourir les boutons et leur ajouter un gestionnaire d'événements "click"
-  buttons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      // Récupérer la valeur du bouton cliqué
-      const value = button.textContent;
+      button.addEventListener("click", function () {
+        // Récupérer la valeur du bouton cliqué
+        const value = button.textContent;
 
-      // Mettre à jour la valeur du champ d'entrée avec la valeur du bouton
-      // const input = document.querySelector("#mon-champ");
-      const input = document.getElementById('heureChoisie');
-      input.value = value;
-    });
-  });
+
+        // Mettre à jour la valeur du champ d'entrée avec la valeur du bouton
+
+        //document.getElementById("inputHoraire").value = value;
+       
+        const input = document.getElementById('heureChoisie');
+        input.value = input.value = leNomDuJour + ' à ' + value;
+      });
 
 
 
+
+
+
+
+
+
+      buttonsContainer.appendChild(button);
+      // Ajouter 15 minutes à l'heure actuelle
+      currentTime = new Date(currentTime.getTime() + 15 * 60000);
+    };
+  };
 
 };
+
+
+
+function removeBtn() { // on supprimes les boutons eventuellement créés
+  var horairesButtons = document.querySelectorAll('horaires');
+  // Parcourir tous les boutons ayant la classe "horaires" et les supprimer un par un
+  for (var i = 0; i < horairesButtons.length; i++) {
+    var button = horairesButtons[i];
+    button.remove();
+  };
+};
+
 
 
 
