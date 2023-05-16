@@ -18,7 +18,7 @@
 
 </head>
 
-<body onload=initDatePicker();>
+<body>
 
   <?php
   // génération des horaires en json

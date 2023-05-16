@@ -67,9 +67,14 @@
           <a href="listeHoraires.php">Liste</a>
         </li>
         <li>
-          <a href="../reservation.php">Ajouter</a>
+          <a href="formAddHoraires.php">Ajouter</a>
         </li>
         <li>
-          <a href="../reservation.php">Supprimer</a>
+          <a href="formModifHoraires.php">Modifier</a>
+        </li>
+       
+       
+        <li>
+          <a href="formDelHoraires.php">Supprimer</a>
         </li>
       </ul>

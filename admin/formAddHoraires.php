@@ -53,54 +53,21 @@
 
       <div class="fakeimg"></div>
       
-      <?php
-$servername = "91.216.107.182";
-$username = "pasca8966";
-$password = "gold1955";
-$dbname = "pasca8966_4gp9c9";
+      <form action="valideFormAddHoraires.php" method="post">
+		<label for="jour">Jour :</label>
+		<input type="text" name="jour" id="jour" required><br><br>
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+		<label for="service">Service :</label>
+		<input type="text" name="service" id="service" required><br><br>
 
-$sql = "SELECT id, jour, service, heureDebut, heureFin FROM Horaires ORDER BY jour";
-$result = $conn->query($sql);
+		<label for="heureDebut">Heure de début :</label>
+		<input type="time" name="heureDebut" id="heureDebut" required><br><br>
 
+		<label for="heureFin">Heure de fin :</label>
+		<input type="time" name="heureFin" id="heureFin" required><br><br>
 
-if ($result->num_rows > 0) {
-   echo'<table class="styled-table">
-   <thead class="thead">
-   <tr>
-     <th>Id</th>
-     <th>Jour</th>
-     <th>Service</th>
-     <th>Heure de début</th>
-     <th>Heure de fin</th>
-  </tr>
-   </thead>
-   <tbody>';
-    while($row = $result->fetch_assoc()) {
-      echo'<tr>
-      <th>'.$row["id"].'</th>
-      <th>'.$row["jour"].'</th>
-      <th>'.$row["service"].'</th>
-      <th>'.$row["heureDebut"].'</th>
-      <th>'.$row["heureFin"].'</th>
-      </tr>';
-    }
-
-    echo"</tbody></table>";
-} else {
-    echo "0 results";
-}
-
-$conn->close();
-?>
-
-
+		<input type="submit" value="Ajouter">
+	</form>
 
 
 

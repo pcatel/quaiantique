@@ -47,58 +47,77 @@
       <h2>Administration : liste des horaires d'ouverture</h2>
 
 
-
-
-
-
-      <div class="fakeimg"></div>
-      
       <?php
+// Create connection
 $servername = "91.216.107.182";
 $username = "pasca8966";
 $password = "gold1955";
 $dbname = "pasca8966_4gp9c9";
-
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, jour, service, heureDebut, heureFin FROM Horaires ORDER BY jour";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if checkbox is checked for each record and delete corresponding record
+    foreach ($_POST["delete"] as $id => $value) {
+        if ($value == "on") {
+            $sql = "DELETE FROM Horaires WHERE id = $id";
+            if ($conn->query($sql) === TRUE) {
+                echo "Suppression réalisée avec succès";
+            } else {
+                echo "Erreur de suppression: " . $conn->error;
+            }
+        }
+    }
+}
+
+$sql = "SELECT id, jour, service, heureDebut, heureFin FROM Horaires  ORDER BY jour";
 $result = $conn->query($sql);
 
-
 if ($result->num_rows > 0) {
-   echo'<table class="styled-table">
-   <thead class="thead">
-   <tr>
-     <th>Id</th>
-     <th>Jour</th>
-     <th>Service</th>
-     <th>Heure de début</th>
-     <th>Heure de fin</th>
-  </tr>
-   </thead>
-   <tbody>';
+    echo '<form action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" method="post">';
+    echo '<table class="styled-table">
+        <thead class="thead">
+            <tr>
+                <th>Id</th>
+                <th>Jour</th>
+                <th>Service</th>
+                <th>Heure de début</th>
+                <th>Heure de fin</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>';
     while($row = $result->fetch_assoc()) {
-      echo'<tr>
-      <th>'.$row["id"].'</th>
-      <th>'.$row["jour"].'</th>
-      <th>'.$row["service"].'</th>
-      <th>'.$row["heureDebut"].'</th>
-      <th>'.$row["heureFin"].'</th>
-      </tr>';
+        echo '<tr>
+            <td>'.$row["id"].'</td>
+            <td>'.$row["jour"].'</td>
+            <td>'.$row["service"].'</td>
+            <td>'.$row["heureDebut"].'</td>
+            <td>'.$row["heureFin"].'</td>
+            <td><input type="checkbox" name="delete['.$row["id"].']"></td>
+        </tr>';
     }
-
-    echo"</tbody></table>";
+    echo '</tbody></table>';
+    echo '<input type="submit" value="Supprimer sélection">';
+    echo '</form>';
 } else {
     echo "0 results";
 }
 
 $conn->close();
 ?>
+
+
+
+
+
+
+
+
+
 
 
 
