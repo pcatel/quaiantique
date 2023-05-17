@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/table.css">
+
+
 </head>
 
 <body>
@@ -36,13 +38,13 @@
     </div>
 
     <div class="main">
-      <h2>Administration : liste des horaires d'ouverture</h2>
+      <h2>Administration : liste des utlisateurs</h2>
       <div class="fakeimg">
       </div>
       <?php include 'connect.php'; ?>    
       <?php
       // Create connection
-      
+    
 
 
       // Connexion à la base de données
@@ -56,8 +58,8 @@
       }
 
       // Requête SELECT pour récupérer les données
-      $sql = "SELECT id, jour, service, heureDebut, heureFin FROM Horaires";
-
+      
+      $sql = "SELECT id, nom, prenom, email, mot_de_passe, typeUser, nbConvives, allergies FROM Utilisateurs";
       $result = $conn->query($sql);
 
 
@@ -65,15 +67,20 @@
 
       // Affichage du tableau avec inputs pré-remplis
       if ($result->num_rows > 0) {
-        echo "<form method='POST' action='valideModifHoraires.php'>";
+        echo "<form method='POST' action='valideModifUsers.php'>";
         echo '<table class="styled-table">
           <thead class="thead">
           <tr>
             <th>Id</th>
-            <th>Jour</th>
-            <th>Service</th>
-            <th>Heure de début</th>
-            <th>Heure de fin</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Mot de passe</th>
+            <th>Type utilisateur</th>
+            <th>Nbre convives</th>
+            <th>Allergies</th>
+
+
             <th>Modifier</th>
 
   </tr>
@@ -90,10 +97,16 @@
         while ($row = $result->fetch_assoc()) {
           echo "<tr>";
           echo "<td><input type='text' name='id[]' value='" . $row["id"] . "'></td>";
-          echo "<td><input type='text' name='jour[]' value='" . $row["jour"] . "'></td>";
-          echo "<td><input type='text' name='service[]' value='" . $row["service"] . "'></td>";
-          echo "<td><input type='text' name='heureDebut[]' value='" . $row["heureDebut"] . "'></td>";
-          echo "<td><input type='text' name='heureFin[]' value='" . $row["heureFin"] . "'></td>";
+          echo "<td><input type='text' name='nom[]' value='" . $row["nom"] . "'></td>";
+          echo "<td><input type='text' name='prenom[]' value='" . $row["prenom"] . "'></td>";
+          echo "<td><input type='text' name='email[]' value='" . $row["email"] . "'></td>";
+          echo "<td><input type='text' name='mot_de_passe[]' value='" . $row["mot_de_passe"] . "'></td>";
+          echo "<td><input type='text' name='typeUser[]' value='" . $row["typeUser"] . "'></td>";
+          echo "<td><input type='text' name='nbConvives[]' value='" . $row["nbConvives"] . "'></td>";
+          echo "<td><input type='text' name='allergies[]' value='" . $row["allergies"] . "'></td>";
+
+
+
           echo "<td><input type='checkbox' name='modifier[]'></td>";
           echo "</tr>";
         }

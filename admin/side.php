@@ -7,10 +7,13 @@
           <a href="listeUsers.php">Liste</a>
         </li>
         <li>
-          <a href="../reservation.php">Ajouter</a>
+          <a href="formAddUsers.php">Ajouter</a>
         </li>
         <li>
-          <a href="../reservation.php">Supprimer</a>
+          <a href="formModifUsers.php">Modifier</a>
+        </li>
+        <li>
+        <a href="formDelUsers.php">Supprimer</a>
         </li>
       </ul>
 
@@ -25,22 +28,24 @@
           <a href="addImgGalerie.php">Ajouter</a>
         </li>
         <li>
-          <a href="../reservation.php">Supprimer</a>
+          <a href="../../reservation.php">Supprimer</a>
         </li>
       </ul>
 
       <!-- Carte -->
       <p>La carte</p>
-
       <ul>
         <li>
           <a href="listePlats.php">Liste</a>
         </li>
         <li>
-          <a href="../reservation.php">Ajouter</a>
+          <a href="formAddPlats.php">Ajouter</a>
         </li>
         <li>
-          <a href="../reservation.php">Supprimer</a>
+          <a href="formModifPlats.php">Modifier</a>
+        </li>
+        <li>
+        <a href="formDelplats.php">Supprimer</a>
         </li>
       </ul>
 
@@ -52,10 +57,13 @@
           <a href="listeMenus.php">Liste</a>
         </li>
         <li>
-          <a href="../reservation.php">Ajouter</a>
+          <a href="formAddMenus.php">Ajouter</a>
         </li>
         <li>
-          <a href="../reservation.php">Supprimer</a>
+          <a href="formModifMenus.php">Modifier</a>
+        </li>
+        <li>
+        <a href="formDelMenus.php">Supprimer</a>
         </li>
       </ul>
 
@@ -72,8 +80,6 @@
         <li>
           <a href="formModifHoraires.php">Modifier</a>
         </li>
-       
-       
         <li>
           <a href="formDelHoraires.php">Supprimer</a>
         </li>

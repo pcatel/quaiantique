@@ -2,7 +2,8 @@
 <?php
 // Vérification si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   
+    // Connexion à la base de données
+
     
     $conn = new mysqli($servername, $username, $password, $dbname);
     
@@ -13,25 +14,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Récupération des données du formulaire
     $ids = $_POST['id'];
-    $jours = $_POST['jour'];
-    $services = $_POST['service'];
-    $heuresDebut = $_POST['heureDebut'];
-    $heuresFin = $_POST['heureFin'];
+    $noms = $_POST['nom'];
+    $descriptions = $_POST['description'];
+    $categories = $_POST['categorie'];
+    $prixs = $_POST['prix'];
     $modificateurs = isset($_POST['modifier']) ? $_POST['modifier'] : array();
     
     // Parcours des données pour mise à jour
     for ($i = 0; $i < count($ids); $i++) {
         $id = $ids[$i];
-        $jour = $jours[$i];
-        $service = $services[$i];
-        $heureDebut = $heuresDebut[$i];
-        $heureFin = $heuresFin[$i];
+        $nom = $noms[$i];
+        $description = $descriptions[$i];
+        $categorie = $categories[$i];
+        $prix = $prixs[$i];
+
         $modifier = isset($modificateurs[$i]) ? true : false;
         
         // Mise à jour si le checkbox "modifier" est coché
         if ($modifier) {
             // Préparation et exécution de la requête SQL
-            $sql = "UPDATE Horaires SET jour = '$jour', service = '$service', heureDebut = '$heureDebut', heureFin = '$heureFin' WHERE id = $id";
+            $sql = "UPDATE Plats SET nom = '$nom', description = '$description', categorie = '$categorie', prix = '$prix' WHERE id = $id";
             if ($conn->query($sql) !== TRUE) {
                 echo "Erreur lors de la mise à jour de la base de données : " . $conn->error;
             }

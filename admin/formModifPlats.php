@@ -11,8 +11,6 @@
 </head>
 
 <body>
-
-
   <div class="header">
     <h1>Quai Antique</h1>
     <p> <b>Arnaud Michant - Chambéry</b></p>
@@ -25,10 +23,7 @@
 
     <!-- gestion de la connexion -->
     <?php include '../php/session.php'; ?>
-
   </div>
-
-
 
   <div class="row">
     <div class="side">
@@ -36,13 +31,12 @@
     </div>
 
     <div class="main">
-      <h2>Administration : liste des horaires d'ouverture</h2>
-      <div class="fakeimg">
-      </div>
+      <h2>Administration : liste des plats</h2>
+      <div class="fakeimg"></div>
       <?php include 'connect.php'; ?>    
       <?php
-      // Create connection
-      
+     
+
 
 
       // Connexion à la base de données
@@ -56,8 +50,8 @@
       }
 
       // Requête SELECT pour récupérer les données
-      $sql = "SELECT id, jour, service, heureDebut, heureFin FROM Horaires";
 
+      $sql = "SELECT id, nom, description, categorie, prix FROM Plats";
       $result = $conn->query($sql);
 
 
@@ -65,35 +59,29 @@
 
       // Affichage du tableau avec inputs pré-remplis
       if ($result->num_rows > 0) {
-        echo "<form method='POST' action='valideModifHoraires.php'>";
+        echo "<form method='POST' action='valideModifPlats.php'>";
         echo '<table class="styled-table">
           <thead class="thead">
           <tr>
             <th>Id</th>
-            <th>Jour</th>
-            <th>Service</th>
-            <th>Heure de début</th>
-            <th>Heure de fin</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Catégorie</th>
+            <th>Prix</th>
             <th>Modifier</th>
 
-  </tr>
-   </thead>
-   <tbody>';
-
-
-
-
-
-
+              </tr>
+              </thead>
+              <tbody>';
 
 
         while ($row = $result->fetch_assoc()) {
           echo "<tr>";
           echo "<td><input type='text' name='id[]' value='" . $row["id"] . "'></td>";
-          echo "<td><input type='text' name='jour[]' value='" . $row["jour"] . "'></td>";
-          echo "<td><input type='text' name='service[]' value='" . $row["service"] . "'></td>";
-          echo "<td><input type='text' name='heureDebut[]' value='" . $row["heureDebut"] . "'></td>";
-          echo "<td><input type='text' name='heureFin[]' value='" . $row["heureFin"] . "'></td>";
+          echo "<td><input type='text' name='nom[]' value='" . $row["nom"] . "'></td>";
+          echo "<td><input type='text' name='description[]' value='" . $row["description"] . "'></td>";
+          echo "<td><input type='text' name='categorie[]' value='" . $row["categorie"] . "'></td>";
+          echo "<td><input type='text' name='prix[]' value='" . $row["prix"] . "'></td>";
           echo "<td><input type='checkbox' name='modifier[]'></td>";
           echo "</tr>";
         }
@@ -102,13 +90,12 @@
         echo "</form>";
       } else {
         echo "0 résultats";
-      }
+      };
 
       // Fermeture de la connexion
       $conn->close();
 
       ?>
-
 
     </div>
   </div>

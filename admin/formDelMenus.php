@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/table.css">
+
+
 </head>
 
 <body>
@@ -38,7 +40,7 @@
     </div>
 
     <div class="main">
-      <h2>Administration : liste des horaires d'ouverture</h2>
+      <h2>Administration : liste des menus</h2>
 
       <?php include 'connect.php'; ?>    
       <?php
@@ -54,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if checkbox is checked for each record and delete corresponding record
     foreach ($_POST["delete"] as $id => $value) {
         if ($value == "on") {
-            $sql = "DELETE FROM Horaires WHERE id = $id";
+            $sql = "DELETE FROM Menus WHERE id = $id";
             if ($conn->query($sql) === TRUE) {
                 echo "Suppression réalisée avec succès";
             } else {
@@ -64,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$sql = "SELECT id, jour, service, heureDebut, heureFin FROM Horaires  ORDER BY jour";
+$sql = "SELECT id, nom, description, formule, periode, composition, prix FROM Menus  ORDER BY nom";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -73,10 +75,12 @@ if ($result->num_rows > 0) {
         <thead class="thead">
             <tr>
                 <th>Id</th>
-                <th>Jour</th>
-                <th>Service</th>
-                <th>Heure de début</th>
-                <th>Heure de fin</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Formule</th>
+                <th>Période</th>
+                <th>Composition</th>
+                <th>Prix</th>
                 <th>Supprimer</th>
             </tr>
         </thead>
@@ -84,10 +88,13 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo '<tr>
             <td>'.$row["id"].'</td>
-            <td>'.$row["jour"].'</td>
-            <td>'.$row["service"].'</td>
-            <td>'.$row["heureDebut"].'</td>
-            <td>'.$row["heureFin"].'</td>
+            <td>'.$row["nom"].'</td>
+            <td>'.$row["description"].'</td>
+            <td>'.$row["formule"].'</td>
+            <td>'.$row["periode"].'</td>
+            <td>'.$row["composition"].'</td>
+            <td>'.$row["prix"].'</td>
+
             <td style="text-align: center;"><input type="checkbox" name="delete['.$row["id"].']"></td>
         </tr>';
     }
@@ -100,7 +107,6 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
-
 
 
     </div>

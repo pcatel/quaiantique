@@ -10,16 +10,20 @@ if (!$conn) {
 }
 
 // récupérer les données de formulaire soumises
-$jour = $_POST["jour"];
-$service = $_POST["service"];
-$heureDebut = $_POST["heureDebut"];
-$heureFin = $_POST["heureFin"];
+$nom = $_POST["nom"];
+$description = $_POST["description"];
+$formule = $_POST["formule"];
+$periode = $_POST["periode"];
+$composition = $_POST["composition"];
+$prix = $_POST["prix"];
 
-// insérer un nouvel enregistrement dans la table "Horaires"
-$sql = "INSERT INTO Horaires (jour, service, heureDebut, heureFin) VALUES ('$jour', '$service', '$heureDebut', '$heureFin')";
+
+
+// insérer un nouvel enregistrement dans la table "Menus"
+$sql = "INSERT INTO Menus (nom, description, formule, periode, composition, prix) VALUES ('$nom', '$description', '$formule', '$periode', '$composition', '$prix')";
 
 if (mysqli_query($conn, $sql)) {
-	echo "Nouvel horaire ajouté avec succès";
+	echo "Nouvel menu ajouté avec succès";
 } else {
 	echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
 }

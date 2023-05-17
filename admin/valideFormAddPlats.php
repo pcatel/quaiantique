@@ -4,22 +4,25 @@
 
 
 
+
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
 	die("Connection failed: " . mysqli_connect_error());
 }
 
 // récupérer les données de formulaire soumises
-$jour = $_POST["jour"];
-$service = $_POST["service"];
-$heureDebut = $_POST["heureDebut"];
-$heureFin = $_POST["heureFin"];
+$nom = $_POST["nom"];
+$description = $_POST["description"];
+$categorie = $_POST["categorie"];
+$prix = $_POST["prix"];
 
-// insérer un nouvel enregistrement dans la table "Horaires"
-$sql = "INSERT INTO Horaires (jour, service, heureDebut, heureFin) VALUES ('$jour', '$service', '$heureDebut', '$heureFin')";
+
+
+// insérer un nouvel enregistrement dans la table "Menus"
+$sql = "INSERT INTO Plats (nom, description, categorie, prix) VALUES ('$nom', '$description', '$categorie','$prix')";
 
 if (mysqli_query($conn, $sql)) {
-	echo "Nouvel horaire ajouté avec succès";
+	//echo "Nouveau plat ajouté avec succès";
 } else {
 	echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
 }

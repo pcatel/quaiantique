@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/table.css">
+
+
 </head>
 
 <body>
@@ -38,12 +40,15 @@
     </div>
 
     <div class="main">
-      <h2>Administration : liste des horaires d'ouverture</h2>
+      <h2>Administration : liste des utlisateurs</h2>
 
-      <?php include 'connect.php'; ?>    
+
       <?php
 // Create connection
-
+$servername = "91.216.107.182";
+$username = "pasca8966";
+$password = "gold1955";
+$dbname = "pasca8966_4gp9c9";
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
@@ -54,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if checkbox is checked for each record and delete corresponding record
     foreach ($_POST["delete"] as $id => $value) {
         if ($value == "on") {
-            $sql = "DELETE FROM Horaires WHERE id = $id";
+            $sql = "DELETE FROM Utilisateurs WHERE id = $id";
             if ($conn->query($sql) === TRUE) {
                 echo "Suppression réalisée avec succès";
             } else {
@@ -63,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+$sql = "SELECT id, nom, prenom, email, mot_de_passe, typeUser, nbConvives, allergies FROM Utilisateurs";
 
-$sql = "SELECT id, jour, service, heureDebut, heureFin FROM Horaires  ORDER BY jour";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -73,10 +78,14 @@ if ($result->num_rows > 0) {
         <thead class="thead">
             <tr>
                 <th>Id</th>
-                <th>Jour</th>
-                <th>Service</th>
-                <th>Heure de début</th>
-                <th>Heure de fin</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Mot de passe</th>
+                <th>Type User</th>
+                <th>nbre convives</th>
+                <th>Allergies</th>
+
                 <th>Supprimer</th>
             </tr>
         </thead>
@@ -84,10 +93,15 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo '<tr>
             <td>'.$row["id"].'</td>
-            <td>'.$row["jour"].'</td>
-            <td>'.$row["service"].'</td>
-            <td>'.$row["heureDebut"].'</td>
-            <td>'.$row["heureFin"].'</td>
+            <td>'.$row["nom"].'</td>
+            <td>'.$row["prenom"].'</td>
+            <td>'.$row["email"].'</td>
+            <td>'.$row["mot_de_passe"].'</td>
+            <td>'.$row["typeUser"].'</td>
+            <td>'.$row["nbConvives"].'</td>
+            <td>'.$row["allergies"].'</td>
+
+
             <td style="text-align: center;"><input type="checkbox" name="delete['.$row["id"].']"></td>
         </tr>';
     }
@@ -100,7 +114,6 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
-
 
 
     </div>

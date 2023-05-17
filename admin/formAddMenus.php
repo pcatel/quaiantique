@@ -6,16 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-
-
-
-
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/table.css">
-  <link rel="stylesheet" href="../css/login.css">
-
-
-
 </head>
 
 <body>
@@ -42,38 +34,42 @@
     <div class="side">
    
     <?php include 'side.php'; ?>
+
     </div>
 
     <div class="main">
-      <h2>Administration : Ajouter une image à la galerie</h2>
+      <h2>Administration : liste des menus</h2>
+
+      <div class="fakeimg"></div>
+      
+      <form action="valideFormAddMenus.php" method="post">
+		<label for="nom">Nom :</label>
+		<input type="text" name="nom" id="nom" required><br><br>
+
+		<label for="description">Description :</label>
+		<input type="text" name="description" id="description" required><br><br>
+
+		<label for="formule">Formule :</label>
+		<input type="text" name="formule" id="formule" required><br><br>
+
+		<label for="periode">Période :</label>
+		<input type="text" name="periode" id="periode" required><br><br>
+
+    <label for="composition">Composition :</label>
+		<input type="text" name="composition" id="composition" required><br><br>
+    
+    <label for="prix">Prix :</label>
+		<input type="text" name="prix" id="prix" required><br><br>
 
 
-
-
-
-
-      <div class="fakeimg">
-      <div class="container">
-        <form method="POST"  action="verifUploadImg.php" class="contact-form" enctype="multipart/form-data">
-          <label for="">titre de la photo : </label>
-          <input type="text" name = "titre" id="titre">
-        <label for="fichier">Sélectionnez une image à télécharger :</label>
-          <input type="file" name="fichier" id="fichier"><br>
-          <input type="submit" name="submit" value="Télécharger">
-        </form>
-
-
-        </div>
-
-
-      </div>
-
+		<input type="submit" value="Ajouter">
+	</form>
 
     </div>
   </div>
 
   <?php include '../php/footer.php'; ?>
-  
+
 
 </body>
 
