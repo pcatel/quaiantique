@@ -14,10 +14,10 @@
     <p> <b>Arnaud Michant - Chambéry</b></p>
   </div>
   <div class="navbar">
-    <a href="../../index.php">Accueil</a>
-    <a href="../../la carte.php">La carte</a>
-    <a href="../../les menus.php">Les Menus</a>
-    <a href="../../reservation.php">Réserver</a>
+    <a href="../index.php">Accueil</a>
+    <a href="../la carte.php">La carte</a>
+    <a href="../les menus.php">Les Menus</a>
+    <a href="../reservation.php">Réserver</a>
 
     <!-- gestion de la connexion -->
     <?php include '../php/session.php'; ?>
@@ -53,7 +53,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, nom, description, formule, periode, composition, prix FROM Menus";
+$sql = "SELECT id, nom, prenom, email, mot_de_passe, typeUser, nbConvives, allergies FROM Utilisateurs";
 $result = $conn->query($sql);
 
 
@@ -62,12 +62,13 @@ if ($result->num_rows > 0) {
    <thead class="thead">
    <tr>
      <th>Id</th>
-     <th>Menu</th>
-     <th>Description</th>
-     <th>Formule</th>
-     <th>Période</th>
-     <th>Composition</th>
-     <th>Prix</th>
+     <th>Nom</th>
+     <th>Prénom</th>
+     <th>Email</th>
+     <th>Mot de passe</th>
+     <th>Type Utilisateur</th>
+     <th>Nbre convives</th>
+     <th>Allergies</th>
 
    </tr>
    </thead>
@@ -76,12 +77,12 @@ if ($result->num_rows > 0) {
       echo'<tr>
       <th>'.$row["id"].'</th>
       <th>'.$row["nom"].'</th>
-      <th>'.$row["description"].'</th>
-      <th>'.$row["formule"].'</th>
-      <th>'.$row["periode"].'</th>
-      <th>'.$row["composition"].'</th>
-      <th>'.$row["prix"].'</th>
-
+      <th>'.$row["prenom"].'</th>
+      <th>'.$row["email"].'</th>
+      <th>'.$row["mot_de_passe"].'</th>
+      <th>'.$row["typeUser"].'</th>
+      <th>'.$row["nbConvives"].'</th>
+      <th>'.$row["allergies"].'</th>
       </tr>';
     }
 
@@ -93,11 +94,12 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
+
     </div>
   </div>
 
   <?php include '../php/footer.php'; ?>
-
+ 
 
 </body>
 

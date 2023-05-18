@@ -43,6 +43,10 @@
 		<label for="jour">Jour :</label>
 		<input type="text" name="jour" id="jour" required><br><br>
 
+    <label for="numJour">numéro du jour :</label>
+		<input type="text" name="numJour" id="numJour" required><br><br>
+
+
 		<label for="service">Service :</label>
 		<input type="text" name="service" id="service" required><br><br>
 

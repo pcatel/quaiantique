@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$sql = "SELECT id, jour, service, heureDebut, heureFin FROM Horaires  ORDER BY jour";
+$sql = "SELECT id, jour, numJour, service, heureDebut, heureFin FROM Horaires  ORDER BY jour";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -74,6 +74,7 @@ if ($result->num_rows > 0) {
             <tr>
                 <th>Id</th>
                 <th>Jour</th>
+                <th>numJour</th>
                 <th>Service</th>
                 <th>Heure de début</th>
                 <th>Heure de fin</th>
@@ -85,6 +86,7 @@ if ($result->num_rows > 0) {
         echo '<tr>
             <td>'.$row["id"].'</td>
             <td>'.$row["jour"].'</td>
+            <td>'.$row["numJour"].'</td>
             <td>'.$row["service"].'</td>
             <td>'.$row["heureDebut"].'</td>
             <td>'.$row["heureFin"].'</td>

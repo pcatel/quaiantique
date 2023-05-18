@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/table.css">
+  <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
     <!-- gestion de la connexion -->
     <?php include '../php/session.php'; ?>
 
-  </div
+</div>
 
 
 

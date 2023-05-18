@@ -77,7 +77,7 @@
 
         while ($row = $result->fetch_assoc()) {
           echo "<tr>";
-          echo "<td><input type='text' name='id[]' value='" . $row["id"] . "'></td>";
+          echo "<td><input type='text' readonly='readonly' name='id[]' value='" . $row["id"] . "'></td>";
           echo "<td><input type='text' name='nom[]' value='" . $row["nom"] . "'></td>";
           echo "<td><input type='text' name='description[]' value='" . $row["description"] . "'></td>";
           echo "<td><input type='text' name='categorie[]' value='" . $row["categorie"] . "'></td>";

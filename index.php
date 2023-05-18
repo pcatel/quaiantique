@@ -45,35 +45,40 @@
     </div>
 
     <div class="main">
-      <h2>La carte</h2>
+      <h2><a href="la carte.php">La carte</a></h2>
 
-    
+      
 
 
 
 
       <div class="fakeimg" style="height:350px;"><img class="slide-img" src="img/index/lacarte.jpg"></div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      
+      <p>Bienvenue dans notre restaurant, un lieu où les saveurs délicieuses et l'ambiance chaleureuse se rencontrent pour créer une expérience culinaire inoubliable.</p>
+
+      <p>Notre restaurant offre un cadre élégant et contemporain, idéal pour les dîners romantiques, les réunions d'affaires ou les occasions spéciales en famille et entre amis. Dès votre arrivée, vous serez accueilli par notre personnel amical et professionnel, dédié à vous offrir un service exceptionnel.</p>
+      
+      <p>Notre menu met en valeur une cuisine raffinée, préparée avec des ingrédients frais et de qualité</p>
       <br>
-      <h2>Les Menus</h2>
+      <h2><a href="les menus.php">Les Menus</a></h2>
 
       <div class="fakeimg" style="height:350px;"><img class="slide-img" src="img/index/menu.jpg"></div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      
+      <p>Découvrez nos délicieux menus, conçus pour ravir vos papilles et satisfaire vos envies gastronomiques les plus exigeantes.</p>
 
-      <h2>Réserver</h2>
+      <h2><a href="reservation.php">Réserver</a></h2>
 
       <div class="fakeimg" style="height:350px;"><img class="slide-img" src="img/index/reservation.jpg"></div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      
+      <p>Réserver en ligne dans notre restaurant est simple et pratique.</p>
+
+      <p>Sélectionnez la date et l'heure souhaitées pour votre réservation. Assurez-vous de vérifier la disponibilité en temps réel afin de choisir une plage horaire qui vous convient.</p>
+
+      <p>Indiquez le nombre de personnes qui vous accompagneront. Si vous avez des demandes particulières, telles que des allergies alimentaires ou des préférences spéciales, n'hésitez pas à les mentionner dans la section des commentaires.</p>
+
+      <p>Remplissez vos coordonnées, notamment votre nom, votre numéro de téléphone et votre adresse e-mail. Cela nous permettra de vous contacter facilement pour confirmer votre réservation.</p>
       <br>
-      <h2>Nos horaires d'ouverture</h2>
-
-      <div class="fakeimg" style="height:350px;"><img class="slide-img" src="img/index/horaire ouverture.jpg"></div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-
+      
 
 
 

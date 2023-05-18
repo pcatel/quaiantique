@@ -14,10 +14,10 @@
     <p> <b>Arnaud Michant - Chambéry</b></p>
   </div>
   <div class="navbar">
-    <a href="../../index.php">Accueil</a>
-    <a href="../../la carte.php">La carte</a>
-    <a href="../../les menus.php">Les Menus</a>
-    <a href="../../reservation.php">Réserver</a>
+    <a href="../index.php">Accueil</a>
+    <a href="../la carte.php">La carte</a>
+    <a href="../les menus.php">Les Menus</a>
+    <a href="../reservation.php">Réserver</a>
 
     <!-- gestion de la connexion -->
     <?php include '../php/session.php'; ?>
@@ -56,7 +56,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, jour, service, heureDebut, heureFin FROM Horaires ORDER BY jour";
+$sql = "SELECT id, jour, numJour, service, heureDebut, heureFin FROM Horaires ORDER BY jour";
 $result = $conn->query($sql);
 
 
@@ -65,6 +65,7 @@ if ($result->num_rows > 0) {
    <thead class="thead">
    <tr>
      <th>Id</th>
+     <th>numjour</th>
      <th>Jour</th>
      <th>Service</th>
      <th>Heure de début</th>
@@ -75,6 +76,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
       echo'<tr>
       <th>'.$row["id"].'</th>
+      <th>'.$row["numJour"].'</th>
       <th>'.$row["jour"].'</th>
       <th>'.$row["service"].'</th>
       <th>'.$row["heureDebut"].'</th>

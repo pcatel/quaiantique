@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
   <title>Quai Antique : Arnaud Michant - Chambéry</title>
   <meta charset="UTF-8">
@@ -8,8 +7,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/table.css">
-
-
+  <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
@@ -20,31 +18,43 @@
     <p> <b>Arnaud Michant - Chambéry</b></p>
   </div>
   <div class="navbar">
-    <a href="../index.php">Accueil</a>
-    <a href="../la carte.php">La carte</a>
-    <a href="../les menus.php">Les Menus</a>
-    <a href="../reservation.php">Réserver</a>
+    <a href="../../index.php">Accueil</a>
+    <a href="../../la carte.php">La carte</a>
+    <a href="../../les menus.php">Les Menus</a>
+    <a href="../../reservation.php">Réserver</a>
 
     <!-- gestion de la connexion -->
     <?php include '../php/session.php'; ?>
 
-  </div>
+</div>
 
 
 
   <div class="row">
     <div class="side">
-      <?php include 'side.php'; ?>
+  
+
+
+
+    <?php include 'side.php'; ?>
+
+
+
     </div>
 
     <div class="main">
       <h2>Administration : liste des utlisateurs</h2>
-      <div class="fakeimg">
-      </div>
-      <?php include 'connect.php'; ?>    
+
+
+
+
+
+
+      <div class="fakeimg"></div>
+      <?php include 'connect.php'; ?> 
       <?php
       // Create connection
-    
+
 
 
       // Connexion à la base de données
@@ -58,7 +68,7 @@
       }
 
       // Requête SELECT pour récupérer les données
-      
+
       $sql = "SELECT id, nom, prenom, email, mot_de_passe, typeUser, nbConvives, allergies FROM Utilisateurs";
       $result = $conn->query($sql);
 
@@ -79,8 +89,6 @@
             <th>Type utilisateur</th>
             <th>Nbre convives</th>
             <th>Allergies</th>
-
-
             <th>Modifier</th>
 
   </tr>
@@ -104,9 +112,6 @@
           echo "<td><input type='text' name='typeUser[]' value='" . $row["typeUser"] . "'></td>";
           echo "<td><input type='text' name='nbConvives[]' value='" . $row["nbConvives"] . "'></td>";
           echo "<td><input type='text' name='allergies[]' value='" . $row["allergies"] . "'></td>";
-
-
-
           echo "<td><input type='checkbox' name='modifier[]'></td>";
           echo "</tr>";
         }
@@ -123,11 +128,11 @@
       ?>
 
 
-    </div>
+</div>
   </div>
 
   <?php include '../php/footer.php'; ?>
-
+ 
 
 </body>
 

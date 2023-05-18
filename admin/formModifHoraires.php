@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/table.css">
+  <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
@@ -32,14 +33,15 @@
 
   <div class="row">
     <div class="side">
-      <?php include 'side.php'; ?>
+   
+    <?php include 'side.php'; ?>
+
     </div>
 
     <div class="main">
       <h2>Administration : liste des horaires d'ouverture</h2>
-      <div class="fakeimg">
-      </div>
-      <?php include 'connect.php'; ?>    
+
+      <?php include 'connect.php'; ?>  
       <?php
       // Create connection
       
@@ -56,7 +58,7 @@
       }
 
       // Requête SELECT pour récupérer les données
-      $sql = "SELECT id, jour, service, heureDebut, heureFin FROM Horaires";
+      $sql = "SELECT id, jour, numJour, service, heureDebut, heureFin FROM Horaires";
 
       $result = $conn->query($sql);
 
@@ -71,6 +73,7 @@
           <tr>
             <th>Id</th>
             <th>Jour</th>
+            <th>numJour</th>
             <th>Service</th>
             <th>Heure de début</th>
             <th>Heure de fin</th>
@@ -91,6 +94,7 @@
           echo "<tr>";
           echo "<td><input type='text' name='id[]' value='" . $row["id"] . "'></td>";
           echo "<td><input type='text' name='jour[]' value='" . $row["jour"] . "'></td>";
+          echo "<td><input type='text' name='numJour[]' value='" . $row["numJour"] . "'></td>";
           echo "<td><input type='text' name='service[]' value='" . $row["service"] . "'></td>";
           echo "<td><input type='text' name='heureDebut[]' value='" . $row["heureDebut"] . "'></td>";
           echo "<td><input type='text' name='heureFin[]' value='" . $row["heureFin"] . "'></td>";
@@ -110,7 +114,8 @@
       ?>
 
 
-    </div>
+  
+</div>
   </div>
 
   <?php include '../php/footer.php'; ?>

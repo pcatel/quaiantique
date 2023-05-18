@@ -1,9 +1,10 @@
-<?php include 'connect.php'; ?>    
+<?php include 'connect.php'; ?>  
+
 <?php
 // Vérification si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Connexion à la base de données
-    
+   
     
     $conn = new mysqli($servername, $username, $password, $dbname);
     
@@ -21,10 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $typeUsers = $_POST['typeUser'];
     $nbConvivess = $_POST['nbConvives'];
     $allergiess = $_POST['allergies'];
-
-
-
     $modificateurs = isset($_POST['modifier']) ? $_POST['modifier'] : array();
+
+
+
+
+
     
     // Parcours des données pour mise à jour
     for ($i = 0; $i < count($ids); $i++) {

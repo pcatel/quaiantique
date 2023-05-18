@@ -49,11 +49,7 @@ function chercheHorairesDuJour() {
 
         heureFinMidi = listeHoraires[i].heureFin;
 
-        // on arrete les reservations 1 heure avant la fin du service
-        var temps = heureFinMidi;
-        var date = new Date("1970-01-01T" + temps + "Z");// convertir la chaîne de temps en objet Date
-        date.setHours(date.getHours() - 1);// soustraire une heure
-        heureFinMidi = date.toISOString().substr(11, 8);// récupérer la nouvelle valeur de temps au format ISO
+      
 
 
 
@@ -61,11 +57,7 @@ function chercheHorairesDuJour() {
       } else { // les horaires début et fin pour le soir
         heureDebutSoir = listeHoraires[i].heureDebut;
         heureFinSoir = listeHoraires[i].heureFin;
-        // on arrete les reservations 1 heure avant la fin du service
-        var temps = heureFinSoir;
-        var date = new Date("1970-01-01T" + temps + "Z");// convertir la chaîne de temps en objet Date
-        date.setHours(date.getHours() - 1);// soustraire une heure
-        heureFinSoir = date.toISOString().substr(11, 8);// récupérer la nouvelle valeur de temps au format ISO
+      
 
       };
     };

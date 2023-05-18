@@ -16,7 +16,7 @@ $heureDebut = $_POST["heureDebut"];
 $heureFin = $_POST["heureFin"];
 
 // insérer un nouvel enregistrement dans la table "Horaires"
-$sql = "INSERT INTO Horaires (jour, service, heureDebut, heureFin) VALUES ('$jour', '$service', '$heureDebut', '$heureFin')";
+$sql = "INSERT INTO Horaires (jour, numJour, service, heureDebut, heureFin) VALUES ('$jour', '$numJour', '$service', '$heureDebut', '$heureFin')";
 
 if (mysqli_query($conn, $sql)) {
 	echo "Nouvel horaire ajouté avec succès";

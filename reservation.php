@@ -6,12 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-  <!-- <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
-
-
-
-  <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/slider.css">
   <link rel="stylesheet" href="css/login.css">
 
@@ -130,7 +125,7 @@
 
 
             <label for="nbreCouverts">Nbre de couverts :</label>
-            <select name="languages" id="lang">
+            <select name="nbreCouverts" id="nbreCouverts">
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -140,7 +135,7 @@
             </select>
 
             <label for="civilité">Civilité :</label>
-            <select name="languages" id="lang">
+            <select name="civilité" id="civilité">
               <option value="2">Mme</option>
               <option value="3">Mlle</option>
               <option value="2">Mr</option>
@@ -166,7 +161,7 @@
 
             <label for="story">Commentaires / Allergies:</label>
 
-            <textarea id="story" name="story" rows="5" cols="33">
+            <textarea id="Commentaires" name="Commentaires" rows="5" cols="33">
 Précisez les éventuelles allergies et si des enfants seront présents...
 </textarea>
 
