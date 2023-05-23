@@ -59,7 +59,12 @@
           <input type="text" name = "titre" id="titre">
         <label for="fichier">Sélectionnez une image à télécharger :</label>
           <input type="file" name="fichier" id="fichier"><br>
-          <input type="submit" name="submit" value="Télécharger">
+          
+      <label for="">à masquer</label>
+<input type="checkbox" id="aMasquer" name="aMasquer">
+<br><br>
+
+          <input type="submit" name="submit" value="Envoyer">
         </form>
 
 

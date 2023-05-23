@@ -1,3 +1,6 @@
+<?php include 'connect.php'; ?>  
+
+
 <?php
 if (isset($_POST['submit'])) {
 	$target_dir = "../img/slider/";
@@ -47,4 +50,36 @@ if (isset($_POST['submit'])) {
 		}
 	}
 }
+
+
+  
+
+// se connecter à la base de données
+
+
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+if (!$conn) {
+	die("Connection failed: " . mysqli_connect_error());
+}
+
+// récupérer les données de formulaire soumises
+$titre = $_POST["titre"];
+$fichier = htmlspecialchars( basename( $_FILES["fichier"]["name"]));
+$aMasquer = $_POST["aMasquer"];
+
+
+// insérer un nouvel enregistrement dans la table "Horaires"
+$sql = "INSERT INTO Galerie (titre, nomFichier, aMasquer) VALUES ('$titre', '$fichier', '$aMasquer')";
+
+if (mysqli_query($conn, $sql)) {
+	echo "Nouvelle photo ajouté avec succès";
+} else {
+	echo "Erreur: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+// fermer la connexion à la base de données
+mysqli_close($conn);
 ?>
+
+<meta http-equiv="refresh" content="1; url=<?php echo $_SERVER["HTTP_REFERER"]  ; ?>" />

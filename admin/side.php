@@ -25,10 +25,10 @@
           <a href="listeImgGalerie.php">Liste</a>
         </li>
         <li>
-          <a href="addImgGalerie.php">Ajouter</a>
+          <a href="formAddGalerie.php">Ajouter</a>
         </li>
         <li>
-          <a href="../../reservation.php">Supprimer</a>
+        <a href="formDelGalerie.php">Supprimer</a>
         </li>
       </ul>
 

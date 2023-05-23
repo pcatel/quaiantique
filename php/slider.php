@@ -1,56 +1,63 @@
-<div class="slide-container">
-            <div class="custom-slider fade">
-                <div class="slide-index">1 / 6</div>
-                <img class="slide-img" src="img/slider/01.jpg" title="Plat N° 1">
-                <div class="slide-text">Plat N° 1</div>
-            </div>
-            <div class="custom-slider fade">
-                <div class="slide-index">2 / 6</div>
-                <img class="slide-img" src="img/slider/02.jpg" title="Plat N° 2">
-                <div class="slide-text">Plat N° 2</div>
-            </div>
-            <div class="custom-slider fade">
-                <div class="slide-index">3 / 6</div>
-                <img class="slide-img" src="img/slider/03.jpg" title="Plat N° 3">
-                <div class="slide-text">Plat N° 3</div>
-            </div>
-            <div class="custom-slider fade">
-                <div class="slide-index">4 / 6</div>
-                <img class="slide-img" src="img/slider/04.jpg" title="Plat N° 4">
-                <div class="slide-text">Plat N° 4</div>
-            </div>
-            <div class="custom-slider fade">
-                <div class="slide-index">5 / 6</div>
-                <img class="slide-img" src="img/slider/05.jpg" title="Plat N° 5">
-                <div class="slide-text">Plat N° 5</div>
-            </div>
-            <div class="custom-slider fade">
-                <div class="slide-index">6 / 6</div>
-                <img class="slide-img" src="img/slider/06.jpg" title="Plat N° 6">
-                <div class="slide-text">Plat N° 6</div>
-            </div>
+
+    <?php include 'connect.php'; ?>
+        <?php
+ echo '<div class="slide-container">';
+        // Connexion à la base de données
+        $connexion = new mysqli($servername, $username, $password, $dbname);
 
 
+        // Vérifier la connexion
+        if ($connexion->connect_error) {
+            die('Erreur de connexion à la base de données : ' . $connexion->connect_error);
+        }
+
+        // Récupérer les données de la table Galerie
+        $requete = $connexion->query('SELECT * FROM Galerie');
+
+        // Vérifier si des enregistrements ont été trouvés
+        if ($requete->num_rows > 0) {
+            $index = 1;
+
+            // Parcourir les enregistrements et afficher chaque élément de la galerie
+            while ($row = $requete->fetch_assoc()) {
+                $titre = $row['titre'];
+                $nomFichier = $row['nomFichier'];
+                //$extension = pathinfo($nomFichier, PATHINFO_EXTENSION);
+                //$cheminImage = '../img/slider/' . $nomFichier ;
+                $cheminImage = 'http://www.pascalcatel.com/maquettes/quaiantique/img/slider/' . $nomFichier;
+               
+                echo '<div class="custom-slider fade">';
+                echo '<div class="slide-index">' . $index . ' / ' . $requete->num_rows . '</div>';
+                echo '<img class="slide-img" src="' . $cheminImage . '" title="' . $titre . '">';
+                echo '<div class="slide-text">' . $titre . '</div>';
+                echo '</div>';
+
+                $index++;
+            }
+        } else {
+            echo 'Aucun élément trouvé dans la galerie.';
+        }
+
+        
 
 
+        echo '<a class="prev" onclick="plusSlides(-1)"><</a>';
+        echo '<a class="next" onclick="plusSlides(1)">></a>';
+        echo '</div>';
+        echo '<br>';
+        echo '<div class="slide-dot">';
+
+        // Afficher les points de navigation
+        for ($i = 1; $i <= $requete->num_rows; $i++) {
+            echo '<span class="dot" onclick="currentSlide(' . $i . ')"></span>';
+        }
+
+        echo ' </div>';
+
+// Fermer la connexion à la base de données
+        $requete->close();
+        $connexion->close();
 
 
-
-
-
-            <a class="prev" onclick="plusSlides(-1)">❮</a>
-            <a class="next" onclick="plusSlides(1)">❯</a>
-        </div>
-        <br>
-        <div class="slide-dot">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <span class="dot" onclick="currentSlide(4)"></span>
-            <span class="dot" onclick="currentSlide(5)"></span>
-            <span class="dot" onclick="currentSlide(6)"></span>
-
-
-
-
-        </div>
+        ?>
+ 

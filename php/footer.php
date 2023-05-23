@@ -50,4 +50,6 @@
     }
     
     echo '</div>';
+    $conn->close();
+    
     ?>

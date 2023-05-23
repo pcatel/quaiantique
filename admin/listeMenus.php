@@ -53,7 +53,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, nom, prenom, email, mot_de_passe, typeUser, nbConvives, allergies FROM Utilisateurs";
+$sql = "SELECT id, nom, description, formule, periode, composition, prix FROM Menus  ORDER BY nom";
 $result = $conn->query($sql);
 
 
@@ -63,12 +63,12 @@ if ($result->num_rows > 0) {
    <tr>
      <th>Id</th>
      <th>Nom</th>
-     <th>Prénom</th>
-     <th>Email</th>
-     <th>Mot de passe</th>
-     <th>Type Utilisateur</th>
-     <th>Nbre convives</th>
-     <th>Allergies</th>
+     <th>Description</th>
+     <th>Formule</th>
+     <th>Période</th>
+     <th>Composition</th>
+     <th>Prix</th>
+     
 
    </tr>
    </thead>
@@ -77,12 +77,12 @@ if ($result->num_rows > 0) {
       echo'<tr>
       <th>'.$row["id"].'</th>
       <th>'.$row["nom"].'</th>
-      <th>'.$row["prenom"].'</th>
-      <th>'.$row["email"].'</th>
-      <th>'.$row["mot_de_passe"].'</th>
-      <th>'.$row["typeUser"].'</th>
-      <th>'.$row["nbConvives"].'</th>
-      <th>'.$row["allergies"].'</th>
+      <th>'.$row["description"].'</th>
+      <th>'.$row["formule"].'</th>
+      <th>'.$row["periode"].'</th>
+      <th>'.$row["composition"].'</th>
+      <th>'.$row["prix"].'</th>
+    
       </tr>';
     }
 

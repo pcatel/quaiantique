@@ -30,7 +30,7 @@
       <?php include 'side.php'; ?>
     </div>
     <div class="main">
-      <h2>Administration : liste des menus</h2>
+      <h2>Administration : liste des images de la galerie</h2>
       <div class="fakeimg"></div>
       <?php include 'connect.php'; ?>
       <?php
@@ -64,7 +64,8 @@
           echo '<tr>
       <th>' . $row["id"] . '</th>
       <th>' . $row["titre"] . '</th>
-      <th>' . $row["nomfichier"] . '</th>
+      <th><a href="../img/slider/' . $row["nomFichier"] . '" target="_blank">'. $row["nomFichier"] .'</a></th>
+
       <th>' . $row["aMasquer"] . '</th>
       
       </tr>';
