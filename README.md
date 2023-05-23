@@ -7,7 +7,7 @@
 + HTML5, CSS3
 + JavaScript 
 + PHP, MySQL
-+ figma ==> wireframes ==> https://github.com/pcatel/quaiantique/blob/main/docEval/charte%20graphique%20et%20wireframe.pdf
++ figma ==> wireframes ==> disponible dans le dossier : https://github.com/pcatel/quaiantique/tree/main/docEval
 + trello ==> gestion de projet ==> https ://trello.com/b/w5rU32W6/quaiantique
 
 
@@ -36,9 +36,10 @@ https://github.com/pcatel/quaiantique/tree/main/admin/fichiers%20de%20creation%2
 
 
 ## charte graphique
-https://github.com/pcatel/quaiantique/blob/main/docEval/charte%20graphique%20et%20wireframe.pdf
+disponible dans le dossier : 
+https://github.com/pcatel/quaiantique/tree/main/docEval
 
 
 
 ## Document technique
-https://github.com/pcatel/quaiantique/blob/main/docEval/charte%20graphique%20et%20wireframe.pdf
+https://github.com/pcatel/quaiantique/blob/main/docEval/Documentation%20technique.pdf
