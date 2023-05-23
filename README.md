@@ -7,8 +7,9 @@
 + HTML5, CSS3
 + JavaScript 
 + PHP, MySQL
-+ figma ==> wireframes ==> https://github.com/pcatel/quaiantique/blob/main/docEval/Quai%20antique.pdf
++ figma ==> wireframes ==> https://github.com/pcatel/quaiantique/blob/main/docEval/charte%20graphique%20et%20wireframe.pdf
 + trello ==> gestion de projet ==> https ://trello.com/b/w5rU32W6/quaiantique
+
 
 
 ## Démarche à suivre pour l’exécution en local
@@ -35,8 +36,9 @@ https://github.com/pcatel/quaiantique/tree/main/admin/fichiers%20de%20creation%2
 
 
 ## charte graphique
-https://github.com/pcatel/quaiantique/blob/main/docEval/charte%20graphique.pdf
+https://github.com/pcatel/quaiantique/blob/main/docEval/charte%20graphique%20et%20wireframe.pdf
 
 
 
 ## Document technique
+https://github.com/pcatel/quaiantique/blob/main/docEval/charte%20graphique%20et%20wireframe.pdf
