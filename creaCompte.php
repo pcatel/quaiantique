@@ -50,33 +50,41 @@
     </div>
     <div class="main">
 
-      <h2>Se connecter</h2>
+      <h2>Créer un compte</h2>
 
       <div class="fakeimg">
       <div class="container">
-        <form action="verifUsers.php" method="POST">
-          <h1>Connexion</h1>
+      <form action="admin/valideFormAddUsers.php" method="post">
+		<label for="nom">Nom :</label>
+		<input type="text" name="nom" id="nom" required><br><br>
 
-          <label><b>Email</b></label>
-          <input type="text" placeholder="Entrer votre email" name="email" required>
+		<label for="prenom">Prénom :</label>
+		<input type="text" name="prenom" id="prenom" required><br><br>
 
-          <label><b>Mot de passe</b></label>
-          <input type="password" placeholder="Entrer votre mot de passe" name="password" required>
+		<label for="email">Email :</label>
+		<input type="email" name="email" id="email" required><br><br>
 
-          <input type="submit" id='submit' value='Me connecter'>
-          <?php
-          if (isset($_GET['erreur'])) {
-            $err = $_GET['erreur'];
-            if ($err == 1 || $err == 2)
-              echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-          }
-          ?>
-        </form>
+    <label for="mot_de_passe">Mot de passe :</label>
+		<input type="text" name="mot_de_passe" id="mot_de_passe" required><br><br>
+
+    <label for="typeUser">Type utlisateur (admin/client):</label>
+		<input type="text" name="typeUser" id="typeUser" required><br><br>
+
+    <label for="nbConvives">Nbre de convives :</label>
+		<input type="text" name="nbConvives" id="nbConvives" required><br><br>
+
+    <label for="allergies">Allergies :</label>
+		<input type="text" name="allergies" id="allergies" required><br><br>
+
+
+		<input type="submit" value="Ajouter">
+	</form>
+
         </div>
 
         
 
-        <a href="creaCompte.php">Je n 'ai pas de compte</a>
+        <a href="formAddUsers.php">Je n 'ai pas de compte</a>
         <br>
 
       </div>
