@@ -7,7 +7,7 @@
 + HTML5, CSS3
 + JavaScript 
 + PHP, MySQL
-+ figma ==> wireframes ==>
++ figma ==> wireframes ==> https://github.com/pcatel/quaiantique/blob/main/docEval/Quai%20antique.pdf
 + trello ==> gestion de projet ==> https ://trello.com/b/w5rU32W6/quaiantique
 
 
