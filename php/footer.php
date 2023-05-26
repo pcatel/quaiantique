@@ -42,8 +42,25 @@
         //affichage des horaires du midi
         //echo '<div class="gridHoraires">';
         foreach ($horairesByService as $service => $horaires) {
+           
+           
+           
+           
+           
             foreach ($horaires as $horairesRow) {
-                echo '' . $horairesRow['heureDebut'] . ' - ' . $horairesRow['heureFin'] . '</p>';
+
+                if ($horairesRow['heureDebut'] ==' 00:00:00' || $horairesRow['heureFin'] =='00:00:00') {
+                    echo 'Fermé </p>';
+                }else {
+                    echo '' . $horairesRow['heureDebut'] . ' - ' . $horairesRow['heureFin'] . '</p>';
+                };
+
+
+
+
+
+
+               // echo '' . $horairesRow['heureDebut'] . ' - ' . $horairesRow['heureFin'] . '</p>';
             }
         }
      echo '</div>';   

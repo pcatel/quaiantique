@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <title>Quai Antique : Arnaud Michant - Chambéry</title>
   <meta charset="UTF-8">
@@ -18,41 +19,51 @@
     <p> <b>Arnaud Michant - Chambéry</b></p>
   </div>
   <div class="navbar">
-    <a href="../../index.php">Accueil</a>
-    <a href="../../la carte.php">La carte</a>
-    <a href="../../les menus.php">Les Menus</a>
-    <a href="../../reservation.php">Réserver</a>
+    <a href="../index.php">Accueil</a>
+    <a href="../la carte.php">La carte</a>
+    <a href="../les menus.php">Les Menus</a>
+    <a href="../reservation.php">Réserver</a>
 
     <!-- gestion de la connexion -->
     <?php include '../php/session.php'; ?>
 
-</div>
+  </div>
 
 
 
   <div class="row">
     <div class="side">
-  
 
 
 
-    <?php include 'side.php'; ?>
+
+      <?php include 'side.php'; ?>
 
 
 
     </div>
 
     <div class="main">
-      <h2>Administration : liste des utlisateurs</h2>
+      <h2>Administration : liste des utilisateurs OK</h2>
 
-
+      <?php
+// Afficher le message de succès s'il est présent dans l'URL
+//if (isset($_GET['message'])) {
+  //  echo "<p>" . $_GET['message'] . "</p>";
+//}
+?>
 
 
 
 
       <div class="fakeimg"></div>
-      <?php include 'connect.php'; ?> 
+      <?php include 'connect.php'; ?>
       <?php
+
+
+
+
+
       // Create connection
 
 
@@ -95,13 +106,6 @@
    </thead>
    <tbody>';
 
-
-
-
-
-
-
-
         while ($row = $result->fetch_assoc()) {
           echo "<tr>";
           echo "<td><input type='text' name='id[]' value='" . $row["id"] . "'></td>";
@@ -120,7 +124,7 @@
         echo "</form>";
       } else {
         echo "0 résultats";
-      }
+      };
 
       // Fermeture de la connexion
       $conn->close();
@@ -128,11 +132,12 @@
       ?>
 
 
-</div>
+
+    </div>
   </div>
 
   <?php include '../php/footer.php'; ?>
- 
+
 
 </body>
 

@@ -5,10 +5,27 @@
     border: 1px solid #ddd;
   }
   
-  th, td {
+  th{
     text-align: left;
     padding: 8px;
     font-size: 12px;
+    background-color: #392c1e;
+    color: white;
+  
+  
+  
+  }
+     
+  td {
+    text-align: left;
+    padding: 8px;
+    font-size: 12px;
+   
   }
   
   tr:nth-child(even){background-color: #f2f2f2}
+
+.serviceFerme{
+color: red;
+
+}

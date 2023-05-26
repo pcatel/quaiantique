@@ -18,10 +18,10 @@
     <p> <b>Arnaud Michant - Chambéry</b></p>
   </div>
   <div class="navbar">
-    <a href="../../index.php">Accueil</a>
-    <a href="../../la carte.php">La carte</a>
-    <a href="../../les menus.php">Les Menus</a>
-    <a href="../../reservation.php">Réserver</a>
+    <a href="../index.php">Accueil</a>
+    <a href="../la carte.php">La carte</a>
+    <a href="../les menus.php">Les Menus</a>
+    <a href="../reservation.php">Réserver</a>
 
     <!-- gestion de la connexion -->
     <?php include '../php/session.php'; ?>

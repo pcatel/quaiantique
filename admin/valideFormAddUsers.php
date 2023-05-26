@@ -10,7 +10,8 @@ if (!$conn) {
 }
 
 // récupérer les données de formulaire soumises
-$nom = $_POST["nom"];
+//$nom = $_POST["nom"];
+$nom = 'MARCEL';
 $prenom = $_POST["prenom"];
 $email = $_POST["email"];
 $mot_de_passe = $_POST["mot_de_passe"];
@@ -24,8 +25,8 @@ $allergies = $_POST["allergies"];
 
 
 // insérer un nouvel enregistrement dans la table "Horaires"
-$sql = "SELECT id, nom, prenom, email, mot_de_passe, typeUser, nbConvives, allergies FROM Utilisateurs";
-$sql = "INSERT INTO Utilisateurs (nom, prenom, email, mot_de_passe, typeUser, nbConvives, allergies) VALUES ('$nom', '$prenom', '$email', '$mot_de_passse', '$typeUser', '$nbConvives', '$allergies')";
+
+$sql = "INSERT INTO Utilisateurs (nom, prenom, email, mot_de_passe, typeUser, nbConvives, allergies) VALUES ('$nom', '$prenom', '$email', '$mot_de_passe', '$typeUser', '$nbConvives', '$allergies')";
 
 if (mysqli_query($conn, $sql)) {
 	echo "Nouvel utlisateur ajouté avec succès";

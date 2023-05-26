@@ -62,11 +62,11 @@
    <tbody>';
         while ($row = $result->fetch_assoc()) {
           echo '<tr>
-      <th>' . $row["id"] . '</th>
-      <th>' . $row["titre"] . '</th>
-      <th><a href="../img/slider/' . $row["nomFichier"] . '" target="_blank">'. $row["nomFichier"] .'</a></th>
+      <td>' . $row["id"] . '</td>
+      <td>' . $row["titre"] . '</td>
+      <td><a href="../img/slider/' . $row["nomFichier"] . '" target="_blank">'. $row["nomFichier"] .'</a></td>
 
-      <th>' . $row["aMasquer"] . '</th>
+      <td>' . $row["aMasquer"] . '</td>
       
       </tr>';
         }

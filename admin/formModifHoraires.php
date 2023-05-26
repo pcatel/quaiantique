@@ -43,7 +43,14 @@
 
       <?php include 'connect.php'; ?>  
       <?php
-      // Create connection
+    
+     // Afficher le message de succès s'il est présent dans l'URL
+     if (isset($_GET['message'])) {
+         echo "<p>" . $_GET['message'] . "</p>";
+     }else{
+     
+    }
+   
       
 
 
@@ -58,7 +65,7 @@
       }
 
       // Requête SELECT pour récupérer les données
-      $sql = "SELECT id, jour, numJour, service, heureDebut, heureFin FROM Horaires";
+      $sql = "SELECT id, jour, numJour, service, heureDebut, heureFin FROM Horaires ORDER BY numJour ASC, service ASC";
 
       $result = $conn->query($sql);
 
@@ -96,8 +103,23 @@
           echo "<td><input type='text' name='jour[]' value='" . $row["jour"] . "'></td>";
           echo "<td><input type='text' name='numJour[]' value='" . $row["numJour"] . "'></td>";
           echo "<td><input type='text' name='service[]' value='" . $row["service"] . "'></td>";
-          echo "<td><input type='text' name='heureDebut[]' value='" . $row["heureDebut"] . "'></td>";
-          echo "<td><input type='text' name='heureFin[]' value='" . $row["heureFin"] . "'></td>";
+          if ($row["heureDebut"]=='00:00:00') {
+           echo "<td><input type='text' class='serviceFerme' name='heureDebut[]' value='" . $row["heureDebut"] . "'></td>";
+       } else {
+        echo "<td><input type='text' name='heureDebut[]' value='" . $row["heureDebut"] . "'></td>";
+       };
+
+       if ($row["heureFin"]=='00:00:00') {
+        echo "<td><input type='text' class='serviceFerme' name='heureFin[]' value='" . $row["heureFin"] . "'></td>";
+    } else {
+     echo "<td><input type='text' name='heureFin[]' value='" . $row["heureFin"] . "'></td>";
+    };
+
+
+
+
+         // echo "<td><input type='text' name='heureDebut[]' value='" . $row["heureDebut"] . "'></td>";
+          //echo "<td><input type='text' name='heureFin[]' value='" . $row["heureFin"] . "'></td>";
           echo "<td><input type='checkbox' name='modifier[]'></td>";
           echo "</tr>";
         }

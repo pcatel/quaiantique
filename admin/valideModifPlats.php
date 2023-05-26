@@ -45,4 +45,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-<meta http-equiv="refresh" content="1; url=<?php echo $_SERVER["HTTP_REFERER"]; ?>" />
+<meta http-equiv="refresh" content="2; url=<?php echo $_SERVER["HTTP_REFERER"]; ?>" />

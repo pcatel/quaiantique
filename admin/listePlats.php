@@ -76,11 +76,11 @@ if ($result->num_rows > 0) {
    <tbody>';
     while($row = $result->fetch_assoc()) {
       echo'<tr>
-      <th>'.$row["id"].'</th>
-      <th>'.$row["nom"].'</th>
-      <th>'.$row["description"].'</th>
-      <th>'.$row["prix"].'</th>
-      <th>'.$row["categorie"].'</th>
+      <td>'.$row["id"].'</td>
+      <td>'.$row["nom"].'</td>
+      <td>'.$row["description"].'</td>
+      <td>'.$row["prix"].'</td>
+      <td>'.$row["categorie"].'</td>
       </tr>';
     }
 

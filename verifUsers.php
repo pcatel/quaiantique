@@ -8,7 +8,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
  $db_name = 'pasca8966_4gp9c9';
  $db_host = '91.216.107.182';
 
-
+ include 'connect.php';
 
 
  $db = mysqli_connect($db_host, $db_username, $db_password,$db_name)

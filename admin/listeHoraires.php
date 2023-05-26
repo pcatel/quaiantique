@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/table.css">
+
 </head>
 <body>
   <div class="header">
@@ -56,7 +57,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, jour, numJour, service, heureDebut, heureFin FROM Horaires ORDER BY jour";
+$sql = "SELECT id, jour, numJour, service, heureDebut, heureFin FROM Horaires ORDER BY numJour ASC, service ASC";
 $result = $conn->query($sql);
 
 
@@ -75,13 +76,25 @@ if ($result->num_rows > 0) {
    <tbody>';
     while($row = $result->fetch_assoc()) {
       echo'<tr>
-      <th>'.$row["id"].'</th>
-      <th>'.$row["numJour"].'</th>
-      <th>'.$row["jour"].'</th>
-      <th>'.$row["service"].'</th>
-      <th>'.$row["heureDebut"].'</th>
-      <th>'.$row["heureFin"].'</th>
-      </tr>';
+      <td>'.$row["id"].'</td>
+      <td>'.$row["numJour"].'</td>
+      <td>'.$row["jour"].'</td>
+      <td>'.$row["service"].'</td>';
+
+    if ($row["heureDebut"]=='00:00:00') {
+        echo '<td class="serviceFerme">'.$row["heureDebut"].'</td>';
+    } else {
+      echo '<td>'.$row["heureDebut"].'</td>';
+    };
+
+    if ($row["heureFin"]=='00:00:00') {
+      echo '<td class="serviceFerme">'.$row["heureFin"].'</td>';
+  } else {
+    echo '<td>'.$row["heureFin"].'</td>';
+  };
+
+
+     echo' </tr>';
     }
 
     echo"</tbody></table>";

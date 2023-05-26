@@ -82,10 +82,7 @@
 
         </div>
 
-        
-
-        <a href="formAddUsers.php">Je n 'ai pas de compte</a>
-        <br>
+     
 
       </div>
 

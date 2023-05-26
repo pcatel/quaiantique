@@ -75,13 +75,13 @@ if ($result->num_rows > 0) {
    <tbody>';
     while($row = $result->fetch_assoc()) {
       echo'<tr>
-      <th>'.$row["id"].'</th>
-      <th>'.$row["nom"].'</th>
-      <th>'.$row["description"].'</th>
-      <th>'.$row["formule"].'</th>
-      <th>'.$row["periode"].'</th>
-      <th>'.$row["composition"].'</th>
-      <th>'.$row["prix"].'</th>
+      <td>'.$row["id"].'</td>
+      <td>'.$row["nom"].'</td>
+      <td>'.$row["description"].'</td>
+      <td>'.$row["formule"].'</td>
+      <td>'.$row["periode"].'</td>
+      <td>'.$row["composition"].'</td>
+      <td>'.$row["prix"].'</td>
     
       </tr>';
     }

@@ -84,14 +84,14 @@ if ($result->num_rows > 0) {
    <tbody>';
     while($row = $result->fetch_assoc()) {
       echo'<tr>
-      <th>'.$row["id"].'</th>
-      <th>'.$row["nom"].'</th>
-      <th>'.$row["prenom"].'</th>
-      <th>'.$row["email"].'</th>
-      <th>'.$row["mot_de_passe"].'</th>
-      <th>'.$row["typeUser"].'</th>
-      <th>'.$row["nbConvives"].'</th>
-      <th>'.$row["allergies"].'</th>
+      <td>'.$row["id"].'</td>
+      <td>'.$row["nom"].'</td>
+      <td>'.$row["prenom"].'</td>
+      <td>'.$row["email"].'</td>
+      <td>'.$row["mot_de_passe"].'</td>
+      <td>'.$row["typeUser"].'</td>
+      <td>'.$row["nbConvives"].'</td>
+      <td>'.$row["allergies"].'</td>
       </tr>';
     }
 

@@ -42,8 +42,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Fermeture de la connexion à la base de données
     $conn->close();
+
+    // Redirection vers la page du formulaire avec un message de succès
+    $message = "La mise à jour a été effectuée avec succès.";
+    $url = $_SERVER["HTTP_REFERER"] . "?message=" . urlencode($message);
+    header("Location: " . $url);
+    exit();
     
 }
 
 ?>
-<meta http-equiv="refresh" content="1; url=<?php echo $_SERVER["HTTP_REFERER"]  ; ?>" />
+<meta http-equiv="refresh" content="5; url=<?php echo $_SERVER["HTTP_REFERER"]  ; ?>" />
